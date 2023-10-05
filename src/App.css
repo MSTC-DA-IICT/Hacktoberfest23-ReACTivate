@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+/* Default CSS start */
+* {
+  margin: 0;
+  padding: 0;
 }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+body {
+  font-weight: 400;
+  background-color: #121212;
+  color: #eeeeee;
+}
+.highlight {
+  background-color: #181818;
+  color: #808080;
+}
+a,
+li,
+button,
+ul {
+  line-height: normal;
+  text-decoration: none;
+}
+a:link,
+a:hover,
+a:active,
+a:visited {
+  text-decoration: none;
+  color: #808080;
+}
+.go-back-home {
+  font-size: larger;
+  color: #818181;
+}
+.last-updated{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+/* Default CSS End*/
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*Nav CSS Start*/
+.navbar {
+  height: 55px;
+  background-color: #333; 
+  color: #fff; 
 }
+.navbar-brand{
+  position: absolute;
+  padding-left: 20px;
+  float: left;
+  line-height: 55px;
+  text-transform: uppercase;
+  font-size: 1.4em;
+}
+.navbar-collapse{
+  float: right;
+  transition: all 0.5s ease-in-out;
+}
+.navbar-collapse a{
+  float: left;
+  position: relative;
+  display: block;
+  padding: 0 20px;
+  line-height: 55px;
+  text-decoration: none;
+}
+.settings-dropdown {
+  position: absolute;
+  top: 55px; 
+  right: 5px;
+  cursor: pointer;
+  background-color: #444;
+}
+.settings-dropdown ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.settings-dropdown li{
+  margin: 10px 0;
+  padding: 0 20px;
+  line-height: 35px;
+}
+.settings-dropdown li:hover{
+  background: #333;
+}
+/* Add additional styles for your navigation items and appearance options as needed */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* Navbar CSS End */

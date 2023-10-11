@@ -52,7 +52,7 @@ export default function Clublist(){
         
     }
     return(
-        <div className="container">
+        <div className="container ">
         <table className="mytable">
   <caption className="mycaption">Clubs and Committees at DA-IICT</caption>
   <thead>

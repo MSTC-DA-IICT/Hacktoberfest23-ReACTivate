@@ -5,16 +5,9 @@ import { FaCog } from 'react-icons/fa';
 
 export const NavBar = () => {
   const [showSettings, setShowSettings] = useState(false);
-  const [selectedStyle, setSelectedStyle] = useState('light'); 
 
   const handleSettingsClick = () => {
     setShowSettings(!showSettings);
-  };
-
-  const handleAppearanceChange = (style) => {
-    setSelectedStyle(style);
-    console.log('Selected style:', style);
-    setShowSettings(false);
   };
 
   return (
@@ -29,6 +22,15 @@ export const NavBar = () => {
             <Nav.Link as={Link} aria-label="home" to="/">
               HOME
             </Nav.Link>
+
+            <Nav.Link as={Link} aria-label="home" to="/clubs">
+              CLUBS
+            </Nav.Link>
+
+            <div className='search-box'>
+              <input type="text" />
+              <button>Search</button>
+            </div>
             
             <Nav.Link className="settings-button" onClick={handleSettingsClick} aria-label="settings">
               <FaCog />
@@ -39,40 +41,21 @@ export const NavBar = () => {
         {showSettings && (
           <div className="settings-dropdown">
             <ul>
-              <li
-                onClick={() => handleAppearanceChange('light')}
-                className={selectedStyle === 'light' ? 'active' : ''}
-              >
-                Light
+              <li>
+                <a href='/appearance' >Appearance</a>
               </li>
-              <li
-                onClick={() => handleAppearanceChange('dark')}
-                className={selectedStyle === 'dark' ? 'active' : ''}
-              >
-                Dark
+              <li>
+                <a href='/' >lorem</a>
               </li>
-              <li
-                onClick={() => handleAppearanceChange('light-blue')}
-                className={selectedStyle === 'light-blue' ? 'active' : ''}
-              >
-                Light Blue
+              <li>
+                <a href='/' >ipsum</a>
               </li>
-              <li
-                onClick={() => handleAppearanceChange('light-green')}
-                className={selectedStyle === 'light-green' ? 'active' : ''}
-              >
-                Light Green
-              </li>
-              <li
-                onClick={() => handleAppearanceChange('light-pink')}
-                className={selectedStyle === 'light-pink' ? 'active' : ''}
-              >
-                Light Pink
+              <li>
+                <a href='/' >dolor</a>
               </li>
             </ul>
           </div>
         )}
-
     </Navbar>
   );
 };

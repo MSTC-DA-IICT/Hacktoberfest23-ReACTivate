@@ -26,7 +26,7 @@ let committees = [
  
  ]
 
-export default function Clublist(){
+export default function ClublistPage(){
     let rowgen = () =>{
         let allrows = [];
         let i=1;

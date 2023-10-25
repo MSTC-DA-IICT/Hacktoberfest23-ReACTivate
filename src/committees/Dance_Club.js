@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Dance_Club.css";
-// import ParticlesBg from "particles-bg";
 
 export const DanceEvent = ({ clubName, events }) => {
     // Function to calculate the countdown to event date
@@ -47,20 +46,20 @@ export const DanceEvent = ({ clubName, events }) => {
                 Go to Home Page
             </Link>
             <div className="row justify-content-center align-items-center">
-                <div className="col-md-4">
+                <div className="col-md-3">
                     <img
                         src="../logo-new.png"
                         alt="Club Logo"
                         className="img-fluid mt-4"
-                        style={{ maxHeight: "70px", maxWidth: "60px", borderRadius: "10px" }}
+                        style={{ maxHeight: "80px", maxWidth: "80px", borderRadius: "10px" }}
                     />
                 </div>
-                <div className="col-md-8 d-flex flex-column flex-sm-row align-items-center">
-                    <h1 className="poppinsfonts mb-0 mr-sm-2">{clubName}</h1>
+                <div className="col-md-9">
+                    <h1 className="poppinsfonts mb-0">{clubName}</h1>
                 </div>
             </div>
             <div className="row mt-5">
-                <h2 className="poppinsfonts text-center">Upcoming Events:</h2>
+                <h2 className="poppinsfonts text-center">Upcoming Events</h2>
                 <div className="horlinecover2 mb-4">
                     <div className="horline"></div>
                 </div>
@@ -76,19 +75,19 @@ export const DanceEvent = ({ clubName, events }) => {
                                                     src={`../images/${event.imageFileName}`}
                                                     alt={event.name}
                                                     className="culimg img-fluid mb-3"
-                                                    style={{ maxHeight: "12em" }}
+                                                    style={{ maxHeight: "200px" }}
                                                 />
-                                                <h3>{event.name}</h3>
+                                                <h3 className="moolifonts">{event.name}</h3>
                                             </div>
                                             <div className="backSide">
-                                                <p>Date: {event.date}</p>
-                                                <p>Time: {event.time}</p>
+                                                <p className="moolifonts">Date: {event.date}</p>
+                                                <p className="moolifonts">Time: {event.time}</p>
                                                 <div className="text-center">
-                                                    <h5>
+                                                    <h4 className="moolifonts">
                                                         Countdown: {countdowns[index].days} days{" "}
                                                         {countdowns[index].hours} hours{" "}
                                                         {countdowns[index].minutes} minutes
-                                                    </h5>
+                                                    </h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -98,12 +97,11 @@ export const DanceEvent = ({ clubName, events }) => {
                         </div>
                     ))
                 ) : (
-                    <p className="moolifonts">No current events</p>
+                    <p className="moolifonts">No upcoming events</p>
                 )}
             </div>
-
             <div>
-                <h2 className="danceeventdes mt-5 moolifonts text-center">Events Description:</h2>
+                <h2 className="danceeventdes mt-5 moolifonts text-center">Events Description</h2>
             </div>
             <div className="horlinecover2">
                 <div className="horline"></div>
@@ -113,14 +111,15 @@ export const DanceEvent = ({ clubName, events }) => {
                     return (
                         <div key={index} id={data.name} className="danceeventdes moolifonts row mt-5">
                             <div className="col-md-12">
-                                <h3 className="mt-4 mb-4 text-decoration-underline">{data.name}</h3>
-                                <p>{data.eventDes}</p>
+                                <EventDescriptionCard
+                                    name={data.name}
+                                    description={data.eventDes}
+                                />
                             </div>
                         </div>
                     );
                 })}
             </div>
-
             <div className="moolifonts row mt-5">
                 <div className="p-5 col-md-6">
                     <h2>Club Information</h2>
@@ -169,6 +168,25 @@ export const DanceEvent = ({ clubName, events }) => {
         </div>
     );
 };
+
+const EventDescriptionCard = ({ name, description }) => {
+    return (
+        <div className="moolifonts Cardcover">
+            <div className="DescriptionCard">
+                <div className="DescriptionCardInner">
+                    <div className="DescriptionFrontSide">
+                        <h3 className="moolifonts">{name}</h3>
+                    </div>
+                    <div className="DescriptionBackSide">
+                        <p className="moolifonts">{description}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+// Event data, you can add more events here
 const eventsData = [
     {
         name: "Dance Night",
@@ -202,8 +220,9 @@ const eventsData = [
         eventorganizer: "Dance Club Organizer 4",
         eventDes: "Explore the art of contemporary dance at our workshop. Learn expressive movements and techniques that blend various dance styles. This workshop is open to all skill levels, so come and discover your own dance style in a creative and supportive environment.",
     },
-    // Just add more event objects as needed in the same above format 
+    // Add more events here
 ];
+
 
 const Dance = () => {
     return (
@@ -220,6 +239,4 @@ const Dance = () => {
     );
 };
 
-
 export default Dance;
-

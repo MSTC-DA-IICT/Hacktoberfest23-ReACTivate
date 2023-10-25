@@ -1,62 +1,36 @@
-/* Apply a background image and style for the entire page */
+/* Apply a new background image and style for the entire page */
 body {
     background-image: url('danceimg.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-color: #333; /* Fallback color in case the image is not loaded */
-    color: white; /* Text color */
-    font-family: "Arial", sans-serif; /* Change the font-family if needed */
+    background-color: #0d2443; /* Fallback color in case the image is not loaded */
+    color: #fff; /* Text color */
+    font-family: "Roboto", sans-serif; /* Change the font-family if needed */
 }
 
-/* Style for the entire container */
-.dancewhole {
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
-    padding: 20px;
+/* Styles for the event description card */
+.DescriptionCard {
+    background: rgba(0, 0, 0, 0.7);
+    width: 600px;
+    height: 100px;
+    margin: 20px;
+    perspective: 2000px;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
 }
 
-/* Style for headings */
-.poppinsfonts {
-    font-family: "Poppins", sans-serif;
-    font-size: 24px;
-}
-
-.moolifonts {
-    font-family: "Mooli", sans-serif;
-    font-size: 18px;
-}
-
-.danceeventdes {
-    padding: 10px 7vw;
-}
-
-/* Style for event cards */
-.Cardcover {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.Card {
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for cards */
-    width: 250px;
-    height: 300px;
-    perspective: 1000px;
-    margin: 10px;
-}
-
-.innerCard {
+.DescriptionCardInner {
     position: relative;
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.8s;
     transform-style: preserve-3d;
+    transition: transform 0.5s;
 }
 
-.frontSide,
-.backSide {
+.DescriptionFrontSide,
+.DescriptionBackSide {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -67,21 +41,88 @@ body {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 1rem;
+    background: rgba(0, 0, 0, 0.7);
     color: white;
     box-shadow: 0 0 0.3em rgba(255, 255, 255, 0.5);
     font-weight: 700;
     cursor: pointer;
+    transform: translateZ(50px); /* Parallax effect */
 }
 
-.frontSide {
-    background: linear-gradient(43deg, #FF5733 0%, #FF3367 46%, #FF33FF 100%); /* Gradient background */
+.DescriptionFrontSide {
+    background: linear-gradient(135deg, #ff7f50 0%, #ff3367 50%, #ff33ff 100%);
 }
 
+.DescriptionBackSide {
+    background: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+    transform: rotateY(180deg) translateZ(-50px); /* Parallax effect */
+}
+
+/* Updated Style for Event Cards */
+.Cardcover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Card {
+    background-color: #4CAF50; /* Green background color */
+    width: 280px;
+    height: 400px;
+    margin: 10px;
+    border-radius: 180px; /* Rounded corners */
+    overflow: hidden; /* Hide overflowing content */
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow effect */
+    transition: transform 0.3s ease; /* Smooth transition on hover */
+}
+
+.innerCard {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    transform: rotate(360deg); 
+    transition: transform 0.3s ease; /* Smooth transition on hover */
+}
+
+.Card:hover {
+    transform: scale(1.05); /* Enlarge on hover */
+}
+
+.Card:hover .innerCard {
+    transform: rotate(10deg); /* Rotate on hover */
+}
+
+/* Style for event titles */
+.frontSide h3 {
+    font-size: 24px;
+    color: #fff; /* White text color */
+    margin-bottom: 10px;
+}
+
+/* Style for event details */
+.frontSide p {
+    font-size: 16px;
+    color: #333; /* Dark text color */
+    margin: 0;
+}
+
+/* Style for event date and time */
 .backSide {
-    background: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-    transform: rotateY(180deg);
-    font-size: 20px;
+    background-color: #009688; /* Teal background color */
+    color: #fff; /* White text color */
+    padding: 10px;
+    border-radius: 0 0 20px 20px; /* Rounded corners for the bottom */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
 
 /* Style for horizontal lines */
@@ -110,9 +151,4 @@ body {
     height: 10px;
     border-radius: 10px;
     background: linear-gradient(130deg, #FF7A18, #AF002D 41.07%, #319197 76.05%);
-}
-
-/* Apply a hover effect for the cards */
-.Card:hover .innerCard {
-    transform: rotateY(180deg) scale(1.05); /* Enlarge on hover */
 }

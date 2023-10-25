@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Dance_Club.css";
-import ParticlesBg from "particles-bg";
+// import ParticlesBg from "particles-bg";
 
 export const DanceEvent = ({ clubName, events }) => {
     // Function to calculate the countdown to event date
@@ -216,7 +216,6 @@ const Dance = () => {
                     </div>
                 </div>
             </div>
-            <ParticlesBg type="circle" bg={true} />
         </div>
     );
 };

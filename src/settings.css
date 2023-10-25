@@ -1,0 +1,28 @@
+/* Settings menu container */
+.settings-menu {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background-color: #3d0f68;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+  }
+  
+  /* Settings menu items */
+  .settings-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .settings-menu li {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .settings-menu li:hover {
+    background-color: #f2f2f2; /* Light gray on hover */
+  }
+  

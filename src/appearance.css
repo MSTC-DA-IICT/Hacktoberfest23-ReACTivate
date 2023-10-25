@@ -1,0 +1,28 @@
+/* Appearance settings container */
+.appearance-settings {
+    background-color: #2a0c3e;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+  }
+  
+  /* Theme options styling */
+  .theme-options label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .theme-options input[type="radio"] {
+    margin-right: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Scale up on hover */
+  .theme-options input[type="radio"]:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Apply specific styles for your theme options as needed */
+  

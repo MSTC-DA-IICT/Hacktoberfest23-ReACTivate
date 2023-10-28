@@ -1,80 +1,85 @@
 import React, { useState, useEffect } from "react";
+import "./Programming_Club.css";
 import { Link } from "react-router-dom";
 
-export const ProgrammingClubEvent = ({clubName, events}) => {
-  const calculateCountdown = (eventDate) => {
-    const now = new Date();
-    const targetDate = new Date(eventDate);
-    const timeDifference = targetDate - now;
+const eventsData = [
+  {
+    name: "Event 1",
+    date: "2023-11-01T10:00:00",
+    time: "10:00 AM",
+    imageFileName: "event1.jpg",
+    description: "This is the description of Event 1.",
+  },
+  {
+    name: "Event 2",
+    date: "2023-11-05T15:30:00",
+    time: "3:30 PM",
+    imageFileName: "event2.jpg",
+    description: "This is the description of Event 2.",
+  },
+  // Add more events here
+];
 
-    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    let hours = Math.floor(
-      (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-    days = Math.max(days, 0);
-    hours = Math.max(hours, 0);
-    minutes = Math.max(minutes, 0);
-
-    return { days, hours, minutes };
-  };
-
-  const [countdowns, setCountdowns] = useState(
-    events.map((event) => calculateCountdown(event.date))
-  );
+const ProgrammingClubEvent = ({ clubName }) => {
+  const [countdowns, setCountdowns] = useState([]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCountdowns(
-        events.map((event) => calculateCountdown(event.date))
-      );
-    }, 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, [events]);
+    const calculateCountdown = (eventDate) => {
+      const now = new Date();
+      const targetDate = new Date(eventDate);
+      const timeDifference = targetDate - now;
 
+      let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      days = Math.max(days, 0);
+      hours = Math.max(hours, 0);
+      minutes = Math.max(minutes, 0);
+
+      return { days, hours, minutes };
+    };
+    setCountdowns(eventsData.map((event) => calculateCountdown(event.date)));
+  }, []);
 
   return (
-    <div className="container mt-5 bg-white">
-      <Link to="/" className="btn btn-primary mb-4 mt-2">
-        Go to Home Page
+    <div className="programming-club-container">
+      <Link to="/" className="home-button">
+        Home
       </Link>
-      <div className="row justify-content-center align-items-center">
-        <div className="col-md-4">
-          <img
-            src="../logo-new.png" 
-            alt="Club Logo"
-            className="img-fluid mt-4"
-            style={{ maxHeight: "70px", maxWidth: "60px" }}
-          />
+      <div className="club-header">
+        <div className="club-logo">
+          <img src="../logo-new.png" alt="Club Logo" />
         </div>
-        <div className="col-md-8 d-flex flex-column flex-sm-row align-items-center">
-          <h1 className="mb-0 mr-sm-2">Programming Club</h1>
-        </div>
+        <h1>Programming Club</h1>
       </div>
-      <div className="row mt-5">
-        <h2 className="text-center mb-4">Upcoming Events</h2>
-        {eventsData && eventsData.length > 0 ? (
+      <div className="club-description">
+        <h2>Club Information</h2>
+        <p>
+                    
+Programming clubs are groups of students who come together to learn and practice programming. They offer a variety of 
+activities and resources, such as workshops and tutorials, hackathons, project teams, and mentorship programs. Benefits 
+of joining a programming club include learning new programming skills, meeting other students who are passionate about 
+programming, gaining experience working on real-world coding projects, improving your problem-solving skills, and becoming
+more competitive in the job market.
+        </p>
+      </div>
+      <h2>Upcoming Events</h2>
+      <div className="upcoming-events">
+        {eventsData.length > 0 ? (
           eventsData.map((event, index) => (
-            <div className="col-md-4" key={index}>
-              <div className="card glassmorphism p-3 mb-4">
-                <img
-                  src={`../images/${event.imageFileName}`}
-                  alt={event.name}
-                  className="img-fluid mb-3"
-                  style={{ maxHeight: "12em" }}
-                />
-                <h3>{event.name}</h3>
-                <p>Date: {event.date}</p>
-                <p>Time: {event.time}</p>
-                <div className="text-center">
+            <div className="event-card" key={index}>
+              <img src={`../images/${event.imageFileName}`} alt={event.name} />
+              <h3>{event.name}</h3>
+              <p>Date: {event.date}</p>
+              <p>Time: {event.time}</p>
+              <p>{event.description}</p>
+              <div className="countdown">
+                {countdowns.length > 0 && (
                   <h5>
-                    Countdown: {countdowns[index].days} days{" "}
-                    {countdowns[index].hours} hours {countdowns[index].minutes}{" "}
-                    minutes
+                    Countdown: {countdowns[index].days} days {countdowns[index].hours} hours{" "}
+                    {countdowns[index].minutes} minutes
                   </h5>
-                </div>
+                )}
               </div>
             </div>
           ))
@@ -82,118 +87,31 @@ export const ProgrammingClubEvent = ({clubName, events}) => {
           <p>No current events</p>
         )}
       </div>
-      {eventsData && eventsData.length > 0 ? (
-        eventsData.map((event, index) => (
-          <div className="row mt-5" key={index}>
-            <div className="col-md-12">
-              <h2>{event.name}</h2>
-              <p>{event.description}</p>
-            </div>
-          </div>
-        ))
-      ) : null}
       <div className="row mt-5">
-        <div className="col-md-12">
-          <h2>Club Information</h2>
-          <p>
-            Programming Club has been working to help people explore their
-            hidden passion for programming. We help students understand some
-            basic concepts, and a few who stick around enjoy and master the art
-            of competitive programming. This includes solving complex problems
-            under time and space constraints, which is a valued skill in the
-            field of computer science. Our philosophy is to make programming a
-            fun activity where students come up with problems and discuss
-            solutions out of their interest. We regularly organize contests and
-            discussion sessions to encourage participation of the student
-            community. We actively promote students to participate in
-            algorithmically challenging competitions like ACM ICPC, Facebook
-            Hacker-cup, Google Code Jam, Codechef Snackdown, TCS Codevita,
-            Hackerearth Collegiate Cup, and various others. Students of our club
-            have represented DA-IICT at various such competitions. Programming
-            club continuously strives to uphold and further raise the bar for
-            the programming capabilities of students at DA-IICT.
-          </p>
+                <div className="col-md-12">
+                    <h2>Convener and Deputy Convener</h2>
+                    <p>Convener: Convener Name</p>
+                    <p>Deputy Convener: Deputy Convener Name</p>
+                </div>
+                <div className="horlinecover">
+                <div className="horline"></div>
+                </div>
+                <div className="cullinks">
+                    <a className="culfacebooklink" href="https://www.facebook.com/DaiictCulturalCommittee/">
+                    <svg  xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                    </svg>
+                    </a>
+                    <a className="culinstalink" href="https://www.instagram.com/cultural_daiict/">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-instagram" viewBox="0 0 16 16">
+                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                    </svg>
+                    </a>
+                </div>
         </div>
-      </div>
-      <div className="row mt-5">
-        <div className="col-md-12">
-          <h2>Event Organizers</h2>
-          <ul>
-            <li>
-              <strong>Coding Contest - </strong>Organizer 1
-            </li>
-            <li>
-              <strong>Treasure Club - </strong>Organizer 2
-            </li>
-            {/* Add more organizer details as needed */}
-          </ul>
-        </div>
-      </div>
-      <div className="row mt-5">
-        <div className="col-md-12">
-          <h2>Convener and Deputy Convener</h2>
-          <p>Convener: Convener Name</p>
-          <p>Deputy Convener: Deputy Convener Name</p>
-        </div>
-      </div>
     </div>
   );
 };
-const eventsData = [
-    // {
-    //   name: "Coding Contest",
-    //   date: "2023-10-15T18:00:00",
-    //   time: "10:00 AM",
-    //   imageFileName: "codeing.jpg",
-    // },
-    // {
-    //   name: "Treasure Club",
-    //   date: "2023-10-16T14:30:00",
-    //   time: "2:30 PM",
-    //   imageFileName: "Treasure-Hunt.webp",
-    // },
-    // {
-    //   name: "Bot race",
-    //   date: "2023-10-17T14:30:00",
-    //   time: "2:30 PM",
-    //   imageFileName: "bot-race.jpg",
-    // },
-    // {
-    //   name: "Tug of bots",
-    //   date: "2023-10-16T18:30:00",
-    //   time: "2:30 PM",
-    //   imageFileName: "tug-of-bots.jpg",
-    // },
-    // {
-    //   name: "Rocket event",
-    //   date: "2023-10-18T14:30:00",
-    //   time: "2:30 PM",
-    //   imageFileName: "rocket.jpg",
-    // },
-    // {
-    //   name: "Sherlock",
-    //   date: "2023-10-18T14:43:00",
-    //   time: "2:30 PM",
-    //   imageFileName: "shelock.jpg",
-    // },
-    // Add more event objects as needed
-  ];
-  
-  const ProgrammingClub = () => {
-    return (
-      <div className="container mt-5 mb-5">
-        <div className="row">
-          <div className="col-md-12">
-            <ProgrammingClubEvent clubName="Programming Club" events={eventsData} />
-            {/* Add other components or content here */}
-          </div>
-        </div>
-      </div>
-    );
-  };
 
-export default ProgrammingClub;
-
-
-
+export default ProgrammingClubEvent;
 

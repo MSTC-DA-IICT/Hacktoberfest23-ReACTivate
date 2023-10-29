@@ -8,6 +8,9 @@ import React from 'react'
 import Dcei from './committees/DCEI';
 import ClubDetails from './ClubDetails';
 import Navbar from './NavBar';
+import import Sambhav from './committees/Sambhav';
+import AI_club from './committees/AI_Club';
+
 
 const App = () => {
   return (
@@ -22,7 +25,8 @@ const App = () => {
           <Route path='/13' element={<Dance/>}></Route>
             <Route path='/14' element={<Dcei/>}></Route>
             <Route path='/:id' element={<ClubDetails />} /> {/* Dynamic route for ClubDetails */}
-
+            <Route path ='/19' element={<Sambhav/>}></Route>
+            <Route path='/2' element={<AI_club/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

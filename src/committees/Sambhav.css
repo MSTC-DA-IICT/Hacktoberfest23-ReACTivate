@@ -1,0 +1,66 @@
+/* .sambhav-page{
+    background-color: white;
+} */
+
+.sambhav-page {
+    overflow: auto;
+    background: linear-gradient(109.6deg, rgb(43, 1, 91) 13.4%, rgb(122, 2, 54) 100.2%);
+}
+#gotohome-back{
+    background: linear-gradient(109.6deg, rgb(43, 1, 91) 13.4%, rgb(122, 2, 54) 100.2%)
+}
+.particles {
+    .content {
+        position: relative;
+        z-index: 1;
+        padding: 20px;
+    }
+}
+
+@keyframes particles-float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-50%);
+    }
+}
+
+.sambhav-top {
+    display: flex;
+}
+
+.sambhav-content {
+    /* background-image: url('../SambhavImages/sambhav-background.png'); */
+}
+
+.sambhav-heading {
+    flex: 8;
+    margin-top: 30px;
+    margin-left: 350px;
+    font-size: 70px;
+    text-shadow: 2px 2px #00000070;
+    text-decoration-color: black;
+}
+
+.sambhav-image {
+    height: 200px;
+    width: 200px;
+}
+
+.sambhav-event-div {
+    display: flex;
+    margin-left: 200px;
+    margin-right: 200px;
+    box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+}
+.about-club{
+    margin-top: 50px;
+    margin-left: 200px;
+    margin-right: 200px;
+    font-size: larger;
+}
+.upcoming-events-sambhav{
+    text-align: center;
+}

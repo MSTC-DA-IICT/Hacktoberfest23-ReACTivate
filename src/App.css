@@ -46,6 +46,9 @@
 
 body{
   background-color: rgb(38, 35, 35);
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+
 }
 
 .mytable{
@@ -96,6 +99,9 @@ body{
     padding: 10px;
   }
 
+
+
+
   .clubname{
     padding: 5px;
     font-family: 'Times New Roman', Times, serif;
@@ -121,7 +127,10 @@ body{
       width: 100%;
     }
   }
+
+
   
+ 
 
 
 

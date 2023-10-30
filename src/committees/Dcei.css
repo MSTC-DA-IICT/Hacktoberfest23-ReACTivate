@@ -25,10 +25,15 @@
 .upcoming-events{
     text-shadow: 2px 2px #0000005e;
     text-align: center;
+    box-shadow: 0 0 10px 5px #ff2200;
+
 }
 .contact{
     margin-left: 100px;
 }
 .contact-person{
     font-size: 20px;
+}
+.complete-page{
+
 }

@@ -16,8 +16,7 @@ const eventsData = [
     time: "3:30 PM",
     imageFileName: "event2.jpg",
     description: "This is the description of Event 2.",
-  },
-  // Add more events here
+  }
 ];
 
 const ProgrammingClubEvent = ({ clubName }) => {
@@ -68,7 +67,7 @@ more competitive in the job market.
         {eventsData.length > 0 ? (
           eventsData.map((event, index) => (
             <div className="event-card" key={index}>
-              <img src={`../images/${event.imageFileName}`} alt={event.name} />
+              {/* <img src={`../images/${event.imageFileName}`} alt={event.name} /> */}
               <h3>{event.name}</h3>
               <p>Date: {event.date}</p>
               <p>Time: {event.time}</p>

@@ -4,37 +4,36 @@ import { Link } from "react-router-dom";
 
 const DanceClub = () => {
   const [countdowns, setCountdowns] = useState([]);
-
-  const upcomingEvents = [
-    {
-      name: "Dance Night",
-      date: "2023-12-15",
-      time: "7:00 PM",
-      imageFileName: "dance-night.jpg",
-      eventDes: "Join us for an unforgettable night of dancing, music, and fun!",
-      eventorganizer: "Dance Club Committee",
-    },
-    {
-      name: "Salsa Extravaganza",
-      date: "2024-02-10",
-      time: "8:30 PM",
-      imageFileName: "salsa-extravaganza.jpg",
-      eventDes: "Experience the passion of salsa dancing in our extravagant event.",
-      eventorganizer: "Dance Club Committee",
-    },
-    {
-      name: "Bollywood Beats Bash",
-      date: "2024-04-05",
-      time: "6:00 PM",
-      imageFileName: "bollywood-beats.jpg",
-      eventDes: "Get ready to groove to the best Bollywood beats in town.",
-      eventorganizer: "Dance Club Committee",
-    },
-    // Add more upcoming events here
-  ];
   
   useEffect(() => {
     const now = new Date();
+    const upcomingEvents = [
+      {
+        name: "Dance Night",
+        date: "2023-12-15",
+        time: "7:00 PM",
+        imageFileName: "dance-night.jpg",
+        eventDes: "Join us for an unforgettable night of dancing, music, and fun!",
+        eventorganizer: "Dance Club Committee",
+      },
+      {
+        name: "Salsa Extravaganza",
+        date: "2024-02-10",
+        time: "8:30 PM",
+        imageFileName: "salsa-extravaganza.jpg",
+        eventDes: "Experience the passion of salsa dancing in our extravagant event.",
+        eventorganizer: "Dance Club Committee",
+      },
+      {
+        name: "Bollywood Beats Bash",
+        date: "2024-04-05",
+        time: "6:00 PM",
+        imageFileName: "bollywood-beats.jpg",
+        eventDes: "Get ready to groove to the best Bollywood beats in town.",
+        eventorganizer: "Dance Club Committee",
+      },
+      
+    ];
     const countdownData = upcomingEvents.map((event) => {
       const eventDate = new Date(event.date);
       const timeDifference = eventDate - now;
@@ -50,7 +49,7 @@ const DanceClub = () => {
     });
   
     setCountdowns(countdownData);
-  }, [upcomingEvents]);
+  }, []);
   
   return (
     <div className="dance-club-container">
@@ -60,7 +59,7 @@ const DanceClub = () => {
         <div className="event-list">
           {countdowns.map((event, index) => (
             <div className="event-card" key={index}>
-              <img src={`images/${event.imageFileName}`} alt={event.name} />
+             {/* <img src="sparkles.png" alt={event.name} /> */}
               <div className="event-details">
                 <h3>{event.name}</h3>
                 <p>{event.eventDes}</p>

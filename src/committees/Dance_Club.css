@@ -1,0 +1,67 @@
+.dance-club-container {
+    background: url('danceimg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .club-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .upcoming-events {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+  .event-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .event-card {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  .event-card img {
+    max-width: 100%;
+    border-radius: 5px;
+  }
+  
+  .club-description, .organizer-details, .club-convener-details, .club-deputy-convener-details {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  .club-description p, .organizer-details ul, .club-convener-details p, .club-deputy-convener-details p {
+    margin: 10px 0;
+    font-size: 1.2rem;
+  }
+  
+  .home-button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .home-button:hover {
+    background: #2980b9;
+  }
+  
